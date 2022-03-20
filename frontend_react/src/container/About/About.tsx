@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { images } from "../../constants";
+import { client } from "../../client";
 import "./About.scss";
 
-const about = [
-  { title: "Web Development", description: "I have experienc345e", imgUrl: images.about01 },
-  { title: "Web 999", description: "I have experiencewe", imgUrl: images.about02},
-  { title: "Web D666", description: "I have experiencerer", imgUrl: images.about03},
-  { title: "We444", description: "I have experiencewew", imgUrl: images.about04 },
-];
 function About() {
+  const [aboutData, setAboutData] = useState<any[]>([]);
+
+  useEffect(() => {
+    const query =
+      '*[_type == "abouts"]{title, description, "imgUrl": imgUrl.asset->url}';
+    client.fetch(query).then((res) => {
+      setAboutData(res);
+    });
+  }, []);
+
   return (
     <>
       <h2 className="head-text">
-        I Know That <span>Good Design</span> <br /> means <span>Good Business</span>
+        I Know That <span>Good Design</span> <br /> means{" "}
+        <span>Good Business</span>
       </h2>
       <div className="app__profiles">
-        {about.map((about, index) => {
+        {aboutData.map((about, index) => {
           return (
             <motion.div
               whileInView={{ opacity: 1 }}
