@@ -42,79 +42,84 @@ function Works() {
   return (
     <>
       <div className="app_works">
-
-      
-      <h2 className="head-text">
-        My Creative <span>Portfolio</span> <br /> means{" "}
-        <span>Good Business</span>
-      </h2>
-      <div className="app__works-filter">
-        {workCategory.map((category, index) => {
-          return (
-            <div
-              key={index}
-              onClick={() => handleWorkFilter(category)}
-              className={`app__works-filter-item app__flex p-text ${
-                activeCategory === category ? "active" : ""
-              }`}
-            >
-              {category}
-            </div>
-          );
-        })}
-      </div>
-      <motion.div
-        animate={animateCard}
-        transition={{ duration: 0.5, delayChildren: 0.5 }}
-        className="app__work-portfolio"
-      >
-        {filterWork.map((work, index) => {
-          return (
-            <div className="app__work-item app__flex" key={index}>
-              <div className="app__work-img app__flex">
-                <img src={work.imgUrl} alt={work.title} />
-
-                <motion.div
-                  whileHover={{ opacity: [0, 1] }}
-                  transition={{
-                    duration: 0.25,
-                    ease: "easeInOut",
-                    staggerChildren: 0.5,
-                  }}
-                  className="app__work-hover app__flex"
-                >
-                  <a href={work.codeLink} target="_blank" rel="noreferrer">
-                    <motion.div
-                      whileInView={{ scale: [0, 1] }}
-                      whileHover={{ scale: [1, 0.9] }}
-                      transition={{
-                        duration: 0.25,
-                        ease: "easeInOut",
-                        staggerChildren: 0.5,
-                      }}
-                      className="app__work-hover app__flex"
-                    >
-                      <AiFillEye />
-                    </motion.div>
-                  </a>
-                </motion.div>
+        <h2 className="head-text">
+          My Creative <span>Portfolio</span> <br /> means{" "}
+          <span>Good Business</span>
+        </h2>
+        <div className="app__works-filter">
+          {workCategory.map((category, index) => {
+            return (
+              <div
+                key={index}
+                onClick={() => handleWorkFilter(category)}
+                className={`app__works-filter-item app__flex p-text ${
+                  activeCategory === category ? "active" : ""
+                }`}
+              >
+                {category}
               </div>
-              <div className="app__work-content app__flex">
-                <h4 className="bold-text">{work.title}</h4>
-                <p className="p-text" style={{ marginTop: 10 }}>
-                  {work.shortDesc}
-                </p>
+            );
+          })}
+        </div>
+        <motion.div
+          animate={animateCard}
+          transition={{ duration: 0.5, delayChildren: 0.5 }}
+          className="app__work-portfolio"
+        >
+          {filterWork.map((work, index) => {
+            return (
+              <div className="app__work-item app__flex" key={index}>
+                <div className="app__work-img app__flex">
+                  <img src={work.imgUrl} alt={work.title} />
 
-                <div className="app__work-tag app__flex">
-                  {work.techs.map((tech: string, index:number) => {
-                    return <p className="p-text" key={index}>{tech}</p>;
-                  })}
+                  <motion.div
+                    whileHover={{ opacity: [0, 1] }}
+                    transition={{
+                      duration: 0.25,
+                      ease: "easeInOut",
+                      staggerChildren: 0.5,
+                    }}
+                    className="app__work-hover app__flex"
+                  >
+                    <a href={work.codeLink} target="_blank" rel="noreferrer">
+                      <motion.div
+                        whileInView={{ scale: [0, 1] }}
+                        whileHover={{ scale: [1, 0.9] }}
+                        transition={{
+                          duration: 0.25,
+                          ease: "easeInOut",
+                          staggerChildren: 0.5,
+                        }}
+                        className="app__flex"
+                      >
+                        <AiFillEye />
+                      </motion.div>
+                    </a>
+                  </motion.div>
+                </div>
+                <div className="app__work-content app__flex">
+                  <h4 className="bold-text">{work.title}</h4>
+                  <p className="p-text" style={{ marginTop: 10 }}>
+                    {work.shortDesc}
+                  </p>
+
+                  <div className="app__work-tag app__flex">
+                    {/* {work.techs.map((tech: string, index: number) => {
+                      return (
+                        <p className="p-text" key={index}>
+                          {tech}
+                        </p>
+                      );
+                    })} */}
+                    <p className="p-text">
+                      {work.techs[0]}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </>
   );
