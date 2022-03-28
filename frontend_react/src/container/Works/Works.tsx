@@ -17,7 +17,7 @@ function Works() {
   // const [workCategory, setWorkCategory] = useState<string[]>([]);
   const [filterWork, setFilterWork] = useState<any[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>("All");
-  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
+  const [animateCard, setAnimateCard] = useState<object>({ y: 0, opacity: 1 });
 
   useEffect(() => {
     const query =
@@ -38,6 +38,17 @@ function Works() {
 
   const handleWorkFilter = (category: string) => {
     setActiveCategory(category);
+    setAnimateCard([{ y: 100, opacity: 0 }]);
+
+    setTimeout(() => {
+      setAnimateCard([{ y: 0, opacity: 1 }]);
+
+      if (category === 'All') {
+        setFilterWork(works);
+      } else {
+        setFilterWork(works.filter((work) => work.tag.includes(category)));
+      }
+    }, 500);
   };
   return (
     <>
