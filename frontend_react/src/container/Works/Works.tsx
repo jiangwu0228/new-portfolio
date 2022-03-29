@@ -50,6 +50,7 @@ function Works() {
       }
     }, 500);
   };
+  
   return (
     <>
       <div className="app_works">
