@@ -11,6 +11,7 @@ import workCategory from "./workCategory";
 import contact from "./contact";
 import works from "./works";
 import service from "./service";
+import experiences from "./experiences";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -27,5 +28,6 @@ export default createSchema({
     contact,
     brands,
     abouts,
+    experiences
   ]),
 });
