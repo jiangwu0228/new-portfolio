@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import ReactTooltip from 'react-tooltip';
+import ReactTooltip from "react-tooltip";
 
 import { client } from "../../client";
 import "./Skills.scss";
 
+interface Experiences {
+  year: string;
+  works: string;
+}
+interface Skills {
+  name: string;
+  image: string;
+}
+
 const Skills = () => {
-  const [experiences, setExperiences] = useState([]);
-  const [skills, setSkills] = useState([]);
+  const [experiences, setExperiences] = useState<Experiences[]>([]);
+  const [skills, setSkills] = useState<Skills[]>([]);
 
   useEffect(() => {
     const query = '*[_type == "experiences"]';
     const skillsQuery = '*[_type == "skills"]{name, "image": image.asset->url}';
-
 
     client.fetch(query).then((data) => {
       setExperiences(data);
@@ -29,7 +37,7 @@ const Skills = () => {
 
       <div className="app__skills-container">
         <motion.div className="app__skills-list">
-          {skills.map((skill:any) => (
+          {skills.map((skill: any) => (
             <motion.div
               whileInView={{ opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
@@ -47,13 +55,13 @@ const Skills = () => {
           ))}
         </motion.div>
         <div className="app__skills-exp">
-          {experiences.map((experience:any) => (
+          {experiences.map((experience: any) => (
             <motion.div className="app__skills-exp-item" key={experience.year}>
               <div className="app__skills-exp-year">
                 <p className="bold-text">{experience.year}</p>
               </div>
               <motion.div className="app__skills-exp-works">
-                {experience.works.map((work:any) => (
+                {experience.works.map((work: any) => (
                   <>
                     <motion.div
                       whileInView={{ opacity: [0, 1] }}
