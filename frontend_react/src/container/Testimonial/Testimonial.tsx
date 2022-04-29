@@ -18,69 +18,66 @@ function Testimonial() {
 
   useEffect(() => {
     const query =
-      '*[_type == "testimonials"]{name, "image": image.asset->url}, position, company, link, feedback';
+      '*[_type == "testimonials"]{name, "image": image.asset->url, position, company, link, feedback}';
     const brandsQuery =
       '*[_type == "brands"]{name, "imgUrl": imgUrl.asset->url}';
-    client.fetch(query).then((res) => {
-      setTestimonials(res);
+    client.fetch(query).then((data) => {
+      setTestimonials(data);
     });
-    client.fetch(brandsQuery).then((res) => {
-      setBrands(res);
+    client.fetch(brandsQuery).then((data) => {
+      setBrands(data);
     });
   }, []);
 
   return (
     <>
-      <div>it works</div>
-      {testimonials.map((testimonial:any)=>{
-        return(
-          <>
-            <div className="app__testimonial-item app__flex">
-              <img
-                src={testimonial[currentIndex].image}
-                alt={testimonial[currentIndex].name}
-              />
-              <div className="app__testimonial-content">
-                <p className="p-text">{testimonial[currentIndex].feedback}</p>
-                <div>
-                  <h4 className="bold-text">{testimonial[currentIndex].name}</h4>
-                  <h5 className="p-text">{testimonial[currentIndex].company}</h5>
-                </div>
+      {testimonials.length && (
+        <>
+          <div className="app__testimonial-item app__flex">
+            <img
+              src={testimonials[currentIndex].image}
+              alt={testimonials[currentIndex].name}
+            />
+            <div className="app__testimonial-content">
+              <p className="p-text">{testimonials[currentIndex].feedback}</p>
+              <div>
+                <h4 className="bold-text">{testimonials[currentIndex].name}</h4>
+                <h5 className="p-text">{testimonials[currentIndex].company}</h5>
               </div>
             </div>
-  
-            <div className="app__testimonial-btns app__flex">
-              <div
-                className="app__flex"
-                onClick={() =>
-                  handleClick(
-                    currentIndex === 0
-                      ? testimonials.length - 1
-                      : currentIndex - 1
-                  )
-                }
-              >
-                <HiChevronLeft />
-              </div>
-  
-              <div
-                className="app__flex"
-                onClick={() =>
-                  handleClick(
-                    currentIndex === testimonials.length - 1
-                      ? 0
-                      : currentIndex + 1
-                  )
-                }
-              >
-                <HiChevronRight />
-              </div>
-            </div>
-          </> )
-        })}
+          </div>
 
+          <div className="app__testimonial-btns app__flex">
+            <div
+              className="app__flex"
+              onClick={() =>
+                handleClick(
+                  currentIndex === 0
+                    ? testimonials.length - 1
+                    : currentIndex - 1
+                )
+              }
+            >
+              <HiChevronLeft />
+            </div>
+
+            <div
+              className="app__flex"
+              onClick={() =>
+                handleClick(
+                  currentIndex === testimonials.length - 1
+                    ? 0
+                    : currentIndex + 1
+                )
+              }
+            >
+              <HiChevronRight />
+            </div>
+          </div>
+        </>
+      )}
       <div className="app__testimonial-brands app__flex">
-        {brands.map((brand) => {
+        {brands.map((brand: Brands) => {
           return (
             <motion.div
               whileInView={{ opacity: [0, 1] }}
