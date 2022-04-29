@@ -3,15 +3,19 @@ import createSchema from "part:@sanity/base/schema-creator";
 
 // Then import schema types from any plugins that might expose them
 import schemaTypes from "all:part:@sanity/base/schema-type";
-import testimonials from "./testimonials";
-import skills from "./skills";
-import brands from "./brands";
-import abouts from "./abouts";
-import workCategory from "./workCategory";
-import contact from "./contact";
-import works from "./works";
-import service from "./service";
-import experiences from "./experiences";
+import testimonials from "./portfolio/testimonials";
+import skills from "./portfolio/skills";
+import brands from "./portfolio/brands";
+import abouts from "./portfolio/abouts";
+import workCategory from "./portfolio/workCategory";
+import contact from "./portfolio/contact";
+import works from "./portfolio/works";
+import service from "./portfolio/service";
+import experiences from "./portfolio/experiences";
+import author from "./blog/author";
+import blockContent from "./blog/blockContent";
+import category from "./blog/category";
+import post from "./blog/post";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -28,6 +32,10 @@ export default createSchema({
     contact,
     brands,
     abouts,
-    experiences
+    experiences,
+    author,
+    blockContent,
+    category,
+    post,
   ]),
 });
