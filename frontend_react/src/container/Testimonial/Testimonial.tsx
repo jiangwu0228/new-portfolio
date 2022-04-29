@@ -7,7 +7,7 @@ import { AppWrap } from "../../wrapper";
 import { client } from "../../client";
 import "./Testimonial.scss";
 
-function Testimonial() {
+const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [testimonials, setTestimonials] = useState<Testimonials[]>([]);
   const [brands, setBrands] = useState<Brands[]>([]);
@@ -91,6 +91,6 @@ function Testimonial() {
       </div>
     </>
   );
-}
+};
 
 export default Testimonial;

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationDots, SocialMedia } from "../components";
 
-type AppProps = {
+type Props = {
   children: React.ReactNode;
   idName: string;
   classNames: string;
@@ -10,7 +10,8 @@ type AppProps = {
 //   functionChildren: (idName: string,classNames: string) => React.ReactNode;
 // }
 // const AppWrap: React.FC<Component> = ({ children, idName, classNames }) =>
-const AppWrap = ({ children, idName, classNames }: AppProps) => {
+const AppWrap: React.FC<Props> = props => {
+  const { children, idName, classNames } = props;
   return (
     <div id={idName} className={`app__container ${classNames}`}>
       <SocialMedia />
