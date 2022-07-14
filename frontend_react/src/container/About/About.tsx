@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { client } from "../../client";
+import Itype from "../../components/Itype/Itype";
 import "./About.scss";
 
 function About() {
@@ -16,6 +17,7 @@ function About() {
 
   return (
     <>
+      <Itype></Itype>
       <h2 className="head-text">
         I Know That <span>Good Design</span> <br /> means{" "}
         <span>Good Business</span>

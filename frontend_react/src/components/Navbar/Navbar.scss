@@ -75,6 +75,18 @@
   }
 }
 
+.app__navbar-socialMedia{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  img{
+    width: 30px;
+    height: 30px;
+    margin: 0 5px 0 5px;
+    transition: all 0.2s ease-in-out;
+  }
+}
+
 .app__navbar-menu {
   width: 35px;
   height: 35px;

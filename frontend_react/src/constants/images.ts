@@ -36,6 +36,8 @@ import skype from "../assets/skype.png";
 import spotify from "../assets/spotify.png";
 import comic from "../assets/comic-s.png";
 import csharp from "../assets/c--4.svg";
+import github from "../assets/github.png";
+import linkedin from "../assets/linkedin.png";
 
 export default {
   email,
@@ -72,5 +74,7 @@ export default {
   skype,
   spotify,
   comic,
-  csharp
+  csharp,
+  github,
+  linkedin
 };
