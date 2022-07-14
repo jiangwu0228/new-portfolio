@@ -3,7 +3,6 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { Testimonials, Brands } from "../../model/interface";
 
-import { AppWrap } from "../../wrapper";
 import { client } from "../../client";
 import "./Testimonial.scss";
 
@@ -31,6 +30,7 @@ const Testimonial = () => {
 
   return (
     <>
+
       {testimonials.length && (
         <>
           <div className="app__testimonial-item app__flex">

@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { AppWrap } from "../../wrapper";
 import { images } from "../../constants";
 import "./Header.scss";
 
@@ -15,7 +14,7 @@ const scaleVariants = {
   },
 };
 
-const techImg = [images.flutter, images.redux, images.sass];
+const techImg = [images.csharp, images.react, images.typescript];
 
 function Header():JSX.Element {
   return (

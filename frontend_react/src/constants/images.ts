@@ -34,6 +34,8 @@ import bolt from "../assets/bolt.png";
 import nb from "../assets/nb.png";
 import skype from "../assets/skype.png";
 import spotify from "../assets/spotify.png";
+import comic from "../assets/comic-s.png";
+import csharp from "../assets/c--4.svg";
 
 export default {
   email,
@@ -69,4 +71,6 @@ export default {
   nb,
   skype,
   spotify,
+  comic,
+  csharp
 };
