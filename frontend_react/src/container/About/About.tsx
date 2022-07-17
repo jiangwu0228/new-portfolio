@@ -17,8 +17,7 @@ function About() {
 
   return (
     <>
-      <Itype></Itype>
-      <h2 className="head-text">
+      <h2 className="head-text" id="About">
         I Know That <span>Good Design</span> <br /> means{" "}
         <span>Good Business</span>
       </h2>

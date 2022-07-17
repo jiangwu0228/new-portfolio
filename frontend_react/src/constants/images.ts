@@ -38,6 +38,9 @@ import comic from "../assets/comic-s.png";
 import csharp from "../assets/c--4.svg";
 import github from "../assets/github.png";
 import linkedin from "../assets/linkedin.png";
+import angular from "../assets/angular.svg";
+import laravel from "../assets/laravel.png";
+import mysql from "../assets/mysql.png";
 
 export default {
   email,
@@ -76,5 +79,8 @@ export default {
   comic,
   csharp,
   github,
-  linkedin
+  linkedin,
+  angular,
+  laravel,
+  mysql
 };

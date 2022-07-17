@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import { motion } from "framer-motion";
+import { init } from "ityped";
 import { images } from "../../constants";
 import "./Header.scss";
 
@@ -14,11 +15,26 @@ const scaleVariants = {
   },
 };
 
-const techImg = [images.csharp, images.react, images.typescript];
+const techImg = [images.laravel, images.react, images.vue];
 
-function Header():JSX.Element {
+function Header(): JSX.Element {
+  const textRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if(textRef.current !== null)
+    init(textRef.current, {
+      showCursor: true,
+      backDelay: 1000,
+      backSpeed: 50,
+      strings: [
+        "Freelance Developer",
+        "Backend Developer",
+        "Frontend Developer",
+      ],
+    });
+  }, []);
   return (
-    <div className="app__header app__flex">
+    <div className="app__header app__flex" id="Home">
       <motion.div
         className="app__header-info"
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
@@ -33,8 +49,12 @@ function Header():JSX.Element {
             </div>
           </div>
           <div className="tag-cmp app__flex">
-            <p className="p-text">Web Developer</p>
-            <p className="p-text">Freelancer</p>
+            <span ref={textRef}></span>
+          </div>
+          <div className="tag-cmp app__flex">
+            <a href="#Contact">
+              <button>Get in touch now</button>
+            </a>
           </div>
         </div>
       </motion.div>

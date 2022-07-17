@@ -4,6 +4,7 @@ import "./Itype.scss"
 
 function Itype() {
   const textRef = useRef<HTMLSpanElement>(null);
+
   useEffect(() => {
     if(textRef.current !== null)
     init(textRef.current, {
@@ -19,6 +20,7 @@ function Itype() {
       ],
     });
   }, []);
+  
   return (
     <div className="wrapper">
       <h2>Hi There, I'm</h2>

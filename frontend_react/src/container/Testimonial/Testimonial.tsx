@@ -30,10 +30,12 @@ const Testimonial = () => {
 
   return (
     <>
-
       {testimonials.length && (
         <>
-          <div className="app__testimonial-item app__flex">
+          <h2 className="head-text" id="Testimonial">
+            Testimonials
+          </h2>
+          <div className="app__testimonial-item app__flex" >
             <img
               src={testimonials[currentIndex].image}
               alt={testimonials[currentIndex].name}
