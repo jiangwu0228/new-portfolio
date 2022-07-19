@@ -29,13 +29,6 @@ function Works() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   const query = '*[_type == "workCategory"]';
-  //   client.fetch(query).then((data) => {
-  //     setWorkCategory(data);
-  //   });
-  // }, []);
-
   const handleWorkFilter = (category: string) => {
     setActiveCategory(category);
     setAnimateCard([{ y: 100, opacity: 0 }]);

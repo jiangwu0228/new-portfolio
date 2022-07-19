@@ -4,22 +4,10 @@ import { client } from "../../client";
 import "./Footer.scss";
 import emailjs from "@emailjs/browser";
 
-// interface FormDate {
-//   name: string;
-//   email: string;
-//   message: string;
-// }
-
 const Footer = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  // const [formData, setFormData] = useState<FormDate>({
-  //   name: "",
-  //   email: "",
-  //   message: "",
-  // });
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  // const { name, email, message } = formData;
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (formRef.current !== null)
@@ -42,32 +30,6 @@ const Footer = () => {
           }
         );
   };
-
-  // const handleChangeInput = (e:any) => {
-  //   const { name, value } = e.target;
-  //   setFormData({ ...formData, [name]: value });
-  // };
-
-  // const handleSubmit = async (e:any) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   const contact = {
-  //     _type: "contact",
-  //     name: formData.name,
-  //     email: formData.email,
-  //     message: formData.message,
-  //   };
-
-  //   client
-  //     .create(contact)
-  //     .then(() => {
-  //       setIsSubmitted(true);
-  //       setIsLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   return (
     <>

@@ -1,7 +1,8 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { init } from "ityped";
 import { images } from "../../constants";
+import { client } from "../../client";
 import "./Header.scss";
 
 const scaleVariants = {
@@ -15,23 +16,33 @@ const scaleVariants = {
   },
 };
 
-const techImg = [images.laravel, images.react, images.vue];
+const techImg = [images.laravel, images.react, images.typescript];
 
 function Header(): JSX.Element {
   const textRef = useRef<HTMLSpanElement>(null);
+  const [aboutData, setAboutData] = useState<any[]>([]);
 
   useEffect(() => {
-    if(textRef.current !== null)
-    init(textRef.current, {
-      showCursor: true,
-      backDelay: 1000,
-      backSpeed: 50,
-      strings: [
-        "Freelance Developer",
-        "Backend Developer",
-        "Frontend Developer",
-      ],
+    const query =
+      '*[_type == "abouts"]{title, description, "imgUrl": imgUrl.asset->url}';
+    client.fetch(query).then((res) => {
+      setAboutData(res);
     });
+  }, []);
+
+  useEffect(() => {
+    if (textRef.current !== null)
+      init(textRef.current, {
+        showCursor: true,
+        backDelay: 1000,
+        backSpeed: 50,
+        strings: [
+          "Freelance Developer",
+          "Backend Developer",
+          "Frontend Developer",
+          "UI/UX Designer",
+        ],
+      });
   }, []);
   return (
     <div className="app__header app__flex" id="Home">
@@ -45,17 +56,15 @@ function Header(): JSX.Element {
             <span>👋</span>
             <div style={{ marginLeft: 20 }}>
               <p className="p-text">Hello, I am</p>
-              <h1 className="head-text">Jason</h1>
+              <h1 className="text">Jason</h1>
             </div>
           </div>
-          <div className="tag-cmp app__flex">
+          <div className="tag-cmp">
             <span ref={textRef}></span>
           </div>
-          <div className="tag-cmp app__flex">
-            <a href="#Contact">
-              <button>Get in touch now</button>
-            </a>
-          </div>
+          <a href="#Contact">
+            <div className="tag-cmp app__flex">👉 Get in touch now</div>
+          </a>
         </div>
       </motion.div>
 
